@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <arpa/inet.h>
+#include <string.h>
 
 int main()
 {
@@ -23,7 +24,7 @@ int main()
 		perror("\nExito al abrir el socket");
 		servidor.sin_family = AF_INET;
 		servidor.sin_port = htons(8080);
-		servidor.sin_addr.s_addr = inet_addr("192.168.100.27");
+		servidor.sin_addr.s_addr = INADDR_ANY;
 		lbind = bind(udp_socket_servidor, (struct sockaddr *)&servidor, sizeof(servidor));
 		if (lbind == -1)
 		{
@@ -51,7 +52,7 @@ int main()
 
 				tam = strlen(buffer) + 1;
 
-				sendto(udp_socket_servidor, buffer, bind, 0, (struct sockaddr *)&cliente, &lrecv);
+				sendto(udp_socket_servidor, buffer, tam, 0, (struct sockaddr *)&cliente, lrecv);
 			}
 		}
 	}
