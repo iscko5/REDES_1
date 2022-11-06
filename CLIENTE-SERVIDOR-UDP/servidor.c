@@ -23,7 +23,7 @@ int main()
 		perror("\nExito al abrir el socket");
 		servidor.sin_family = AF_INET;
 		servidor.sin_port = htons(8080);
-		servidor.sin_addr.s_addr = INADDR_ANY;
+		servidor.sin_addr.s_addr = inet_addr("192.168.100.27");
 		lbind = bind(udp_socket_servidor, (struct sockaddr *)&servidor, sizeof(servidor));
 		if (lbind == -1)
 		{

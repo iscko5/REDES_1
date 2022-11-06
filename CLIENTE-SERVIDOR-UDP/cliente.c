@@ -23,7 +23,7 @@ int main()
 		perror("\nExito al abrir el socket");
 		local.sin_family = AF_INET;
 		local.sin_port = htons(8080);
-		local.sin_addr.s_addr = inet_addr("192.168.1.121");
+		local.sin_addr.s_addr = inet_addr("192.168.100.27");
 		lbind = bind(udp_socket_client, (struct sockaddr *)&local, sizeof(local));
 		if (lbind == -1)
 		{
