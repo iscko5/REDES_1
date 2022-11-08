@@ -10,12 +10,12 @@
 
 int main()
 {
-    int clientSocket, tram;
+    int clientSocket, tram, lbind;
     char buffer[1024];
     struct sockaddr_in cliente;
     socklen_t addr_size;
 
-    clientSocket = socket(PF_INET, SOCK_DGRAM, 0);
+    clientSocket = socket(AF_INET, SOCK_DGRAM, 0);
     if (clientSocket == -1)
     {
         perror("\nError al abrir el socket");
@@ -28,7 +28,10 @@ int main()
         cliente.sin_addr.s_addr = inet_addr("127.0.0.1");
         memset(cliente.sin_zero, '\0', sizeof cliente.sin_zero);
 
+        // lbind = bind(clientSocket, (struct sockaddr *)&cliente, sizeof(cliente));
+
         addr_size = sizeof cliente;
+
         printf("\nBienvenido al chat de la primera Practica");
         printf("\nEscribe exit para dejar de enviar mensajes\n");
         while (1)
@@ -36,6 +39,11 @@ int main()
 
             printf("\nManda mensaje al servidor: ");
             fgets(buffer, 1024, stdin);
+
+            // if (buffer == "exit")
+            // {
+            //     break;
+            // }
 
             tram = strlen(buffer) + 1;
 

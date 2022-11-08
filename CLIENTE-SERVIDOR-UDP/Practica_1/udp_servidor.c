@@ -16,7 +16,7 @@ int main()
     struct sockaddr_storage serverStorage;
     socklen_t addr_size;
 
-    serverSocket = socket(PF_INET, SOCK_DGRAM, 0);
+    serverSocket = socket(AF_INET, SOCK_DGRAM, 0);
 
     if (serverSocket == -1)
     {
