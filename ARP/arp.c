@@ -185,7 +185,7 @@ int main()
         indice = obtenerdatos(packet_socket);
         estructuraTrama(tramaEnv);
         enviarTrama(packet_socket, indice, tramaEnv);
-        erecibirTrama(packet_socket, tramaRec);
+        recibirTrama(packet_socket, tramaRec);
         exit(0);
     }
     close(packet_socket);
